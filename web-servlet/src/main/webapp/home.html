@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Static index.html</title>
+</head>
+<body>
+
+	<h1>Basic servlet examples</h1>
+	
+	<h2>Simple servlet</h2>
+	<p>
+		Simple servlet generates page by writing into output. No redirect is done. <b />
+		<b>SimpleFilter</b> is mapped on this server, which will just prints its config parameters at startup and do
+		some sysouts around servlet processing.s
+	</p>
+	<p><a href="simple">Simple servlet</a></p>
+	
+	<h2>Combining servlet output with filter</h2>
+	<p>
+		Simple server generates output, but it is prepended by <b>OutputFilter</b>. <b>SimpleFilter</b> is in chain as well. 
+	</p>
+	<p><a href="output">Filter with ouput</a></p>
+</body>
+</html>
