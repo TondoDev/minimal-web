@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="4.0" xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app version="3.1" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
 	<display-name>test-service</display-name>
 	
 	
@@ -58,6 +58,10 @@
 	</servlet-mapping>
 	
 	
+	<!-- First are executed filters mapped by pattern and then filters mapped by servlet.
+	When filters are using same mapping  way, then order in then deployment descriptor is important. 
+	 -->
+	
 	<filter>
 		<filter-name>SimpleFilter</filter-name>
 		<filter-class>org.tondo.minimal.filter.SimpleFilter</filter-class>
@@ -73,9 +77,9 @@
 	
 	<filter-mapping>
 		<filter-name>SimpleFilter</filter-name>
-		<servlet-name>simpleServlet</servlet-name>
+		<servlet-name>/output</servlet-name>
 		<!-- Or URL pattern is also possible -->
-		<!--  url-pattern>/*</url-pattern> -->
+		<!-- <url-pattern>/output</url-pattern>-->
 	</filter-mapping>
 	
 	<filter>
@@ -87,5 +91,15 @@
 		<filter-name>OutputFilter</filter-name>
 		<url-pattern>/output</url-pattern>
 	</filter-mapping>
+	
+	
+	<!-- Listeners for same event are executed in order as they are defined in the web.xml -->
+	<listener>
+		<listener-class>org.tondo.minimal.listener.SecondContextListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>org.tondo.minimal.listener.ContextListener</listener-class>
+	</listener>
 	
 </web-app>

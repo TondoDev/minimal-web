@@ -21,9 +21,16 @@ public class OutputFilter  implements Filter{
 			throws IOException, ServletException {
 		
 		PrintWriter output = response.getWriter();
-		
+		System.out.println("== doFilter Output before");
 		output.append("<p><font color=\"red\">Prepended by filter!</font></p>");
 		chain.doFilter(request, response);
 		output.append("<p><font color=\"blue\">Appended by filter!</font></p>");
+		System.out.println("== doFilter Output after");
+	}
+	
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
 	}
 }
+
