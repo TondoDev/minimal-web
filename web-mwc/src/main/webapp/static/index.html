@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Spring MVC</title>
+	</head>
+
+	<body>
+		<h1>Minimal Spring MVC project with examples</h1>
+		
+		<p>This page contains set of links and forms to demonstrate configuration and possibilities of <code>Spring MVC</code>.
+		
+		</p>
+		
+		<p>Accessing context root <code>"host"/web-mvc/</code> will redirect to this <code>index.html</code> page.
+		Used is ViewController functionality, see <code>MvcConfig.configureViewResolvers()</code>.
+		</p>
+		
+		<div>
+			<h2>Sample page with controller processing</h2>
+			<p>Calls controller <code>MyBasicController.returnSampleView</code> with mapping <code>/sample</code>
+			Configuration of <code>ViewResolver</code> for JSP pages is in <code>ProgrammaticConfiguration.internalResourceViewResolver()</code>.
+			We override default bean <code>internalResourceViewResolver</code>. If could be used <code>WebMvcConfigurer.configureViewResolvers(ViewResolverRegistry)</code>
+			I don't know. Jsp location is in <code>WEB-INF/view/samplePage.jsp</code>.
+			</p>
+			<a href="/web-mvc/sample?attr=query%20value">Sample page</a>
+		</div>
+		
+		<div>
+			<h2>Sample page with ViewController</h2>
+			<p>Link points to the same <code>samplePage.jsp</code> as previous example, but with different link. Link is handled 
+			by <code>ViewController</code> configured in <code>MvcConfig.addViewControllers()</code>. View is loaded without any 
+			programmatic Model population usually done in controller code.</p>
+			<a href="/web-mvc/sp">Sample page VC</a>
+		</div>
+		
+		<div>
+			<h2>Static resource</h2>
+			<a href="/web-mvc/res/pics/husky.png">Husky picture</a>
+		</div>
+		
+		<div>
+			<h2>Model experiments</h2>
+			<p>Various examples of model handling</p>
+			<a href="/web-mvc/mret">Model</a>
+		</div>
+	</body>
+</html>
